@@ -4,10 +4,16 @@ import random
 # Initialize Pygame
 pygame.init()
 
+
+#INSIDE OF THE GAME LOOP
 # Set up the display to be full screen
 screen_width, screen_height = pygame.display.Info().current_w, pygame.display.Info().current_h
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Nephew's Adventure")
+
+bg = pygame.image.load("bg.png")
+bg = pygame.transform.scale(bg, (screen_width, screen_height))
+
 
 # Load images
 nephew_image = pygame.image.load("nephew.png")  
@@ -63,9 +69,11 @@ for i in range(5):  # Number of toilets
 score = 0
 font = pygame.font.Font(None, 36)
 
+screen.blit(bg, (0, 0))
 # Game loop
 running = True
 while running:
+  # Draw the background image
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -113,8 +121,7 @@ while running:
         if pant.left > screen_width:
             pant.x = 0
 
-    # Fill the screen with white to clear old frames
-    screen.fill((255, 255, 255))
+    screen.blit(bg, (0, 0))
 
     # Draw the toilets
     for toilet in toilets:
