@@ -97,7 +97,8 @@ while running:
         for pant in pants:
             if crap.colliderect(pant):
                 score -= 1
-                craps.remove(crap)
+                if crap in craps:
+                    craps.remove(crap)
                 break
 
     # Scroll toilets and respawn if they go off screen
