@@ -4,8 +4,6 @@ import random
 # Initialize Pygame
 pygame.init()
 
-
-#INSIDE OF THE GAME LOOP
 # Set up the display to be full screen
 screen_width, screen_height = pygame.display.Info().current_w, pygame.display.Info().current_h
 screen = pygame.display.set_mode((screen_width, screen_height))
@@ -14,12 +12,11 @@ pygame.display.set_caption("Nephew's Adventure")
 bg = pygame.image.load("bg.png")
 bg = pygame.transform.scale(bg, (screen_width, screen_height))
 
-
 # Load images
-nephew_image = pygame.image.load("nephew.png")  
+nephew_image = pygame.image.load("nephew.png")
 nephew_rect = nephew_image.get_rect()
 
-toilet_image = pygame.image.load("toilet.png")  
+toilet_image = pygame.image.load("toilet.png")
 # downscale toilet image
 TOILET_SCALE_FACTOR = 10
 toilet_image = pygame.transform.scale(
@@ -30,7 +27,7 @@ toilet_image = pygame.transform.scale(
     ),
 )
 
-crap_image = pygame.image.load("crap.png")  
+crap_image = pygame.image.load("crap.png")
 CRAP_SCALE_FACTOR = 5
 crap_image = pygame.transform.scale(
     crap_image,
@@ -50,7 +47,6 @@ pants_image = pygame.transform.scale(
     ),
 )
 
-
 # List to hold craps and toilets
 craps = []
 toilets = []
@@ -64,16 +60,14 @@ for i in range(5):  # Number of toilets
 for i in range(5):  # Number of toilets
     pants.append(pants_image.get_rect(midbottom=(random.randint(0, screen_width), screen_height)))
 
-
 # Scoring
 score = 0
 font = pygame.font.Font(None, 36)
 
-screen.blit(bg, (0, 0))
 # Game loop
 running = True
 while running:
-  # Draw the background image
+    # Draw the background image
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -117,7 +111,7 @@ while running:
 
     # Scroll pants and respawn if they go off screen
     for pant in pants:
-        pant.x += 2
+        pant.x += 4
         if pant.left > screen_width:
             pant.x = 0
 
